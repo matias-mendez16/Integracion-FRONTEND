@@ -1,6 +1,6 @@
 import styles from './NotFound.module.css';
 
-export default function NotFound() {
+export function NotFound() {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
