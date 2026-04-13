@@ -1,6 +1,6 @@
-import styles from './NotFound.module.css';
+import styles from './SiteStillOnBuilding.module.css';
 
-export default function NotFound() {
+export function SiteStillOnBuilding() {
   return (
     <section className={styles.container}>
       <div className={styles.content}>
@@ -9,8 +9,8 @@ export default function NotFound() {
           alt="Liberty Finance Logo" 
           className={styles.logo} 
         />
-        <h1 className={styles.title}>Error 404</h1>
-        <p className={styles.subtitle}>Page Not Found</p>
+        <h1 className={styles.title}>Sitio en construcción</h1>
+        <p className={styles.subtitle}>Estaremos online en breve</p>
       </div>
     </section>
   );
