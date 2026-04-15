@@ -1,10 +1,15 @@
+:root{
+    font-family: var(--tipoLetraGeneral);
+}
+
+
 .contTestInversor{
     margin-top: 30px;
     margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: #E6E6FA;
+    border: var(--colorBordeVentana);
     border-style: solid;
     border-radius: 10px;
     padding: 30px;
@@ -21,12 +26,12 @@
     align-items: center;
     border-radius: 9px;
     border:none;
-    background-color: #4B0082;
-    color: beige;
-    transition: 0.3s, background-color 0.3s;
+    background-color: var(--colorPrimario);
+    color: var(--colorLetrasBoton);
+    transition: 0.3s;
 }
 
 #botonTest:hover{
-    background-color: #800080;
+    background-color: var(--colorSecundario);
     transform: scale(1.1);
 }
