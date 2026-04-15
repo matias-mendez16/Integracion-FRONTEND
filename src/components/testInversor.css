@@ -1,0 +1,32 @@
+.contTestInversor{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: #E6E6FA;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+#botonTest{
+    display: flex;
+    flex-wrap: wrap;
+    width: 150px;
+    height: 70px;
+    margin-top: 20px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    border:none;
+    background-color: #4B0082;
+    color: beige;
+    transition: 0.3s, background-color 0.3s;
+}
+
+#botonTest:hover{
+    background-color: #800080;
+    transform: scale(1.1);
+}
