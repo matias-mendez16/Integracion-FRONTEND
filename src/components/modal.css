@@ -16,7 +16,7 @@
    display: flex;
    flex-direction: column;
    justify-content:center;
-   border:(--colorBordeVentana);
+   border:var(--colorBordeVentana);
    border-style: solid;
    border-radius: 10px;
    background-color: #ffffff;
@@ -24,7 +24,8 @@
    border-radius: 7px;
    max-width: 24rem;
    width: 100%;
-   height: 30%;
+   height: auto;
+   min-height: 200px;
    box-shadow: 0px 0px 15px 2px var(--colorSombraVentana);
 }
 
