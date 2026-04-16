@@ -1,0 +1,16 @@
+:root{
+  width: 100%;
+  --colorPrimario:#4B0082;
+  --colorSecundario:#800080;
+  --colorLetrasBoton:beige;
+  --colorBordeVentana:#E6E6FA;
+  --colorSombraVentana:#DDA0DD;
+  --tipoLetraGeneral:system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
