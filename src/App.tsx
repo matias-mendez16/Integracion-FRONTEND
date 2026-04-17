@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { DerechosReservados } from './components/DerechosReservados'
+import { Home } from './components/Home'
+
 
 
 
@@ -9,7 +10,7 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path="/derechos-reservados" element={<DerechosReservados />} />
+        <Route path="/" element={<Home />} />
       </Routes>
 
     </BrowserRouter>
