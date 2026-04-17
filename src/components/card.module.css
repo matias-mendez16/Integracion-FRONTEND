@@ -38,3 +38,11 @@
     color: #555;
     display: block;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
