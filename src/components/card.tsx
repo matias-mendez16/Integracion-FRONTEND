@@ -1,4 +1,5 @@
 import { useState } from "react";
+import '../index.css'
 import styles from "../components/card.module.css";
 
 interface CardProps {
