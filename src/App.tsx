@@ -1,7 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-
-import { FAQ } from './components/FAQ'
+import { TerminosYCondiciones } from './components/TerminosYCondiciones'
 
 
 function App() {
@@ -9,9 +8,9 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path="/faq" element={<FAQ />} />
-      </Routes>
+        <Route path="/terminos-y-condiciones" element={<TerminosYCondiciones />} />
 
+      </Routes>
     </BrowserRouter>
   )
 }
