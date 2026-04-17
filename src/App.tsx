@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Home } from './components/Home'
 import { NuestroEquipo } from './components/NuestroEquipo'
-import { Contactenos } from './components/Contactenos'
+import { Contactenos } from './pages/Contactenos'
 import { NavBar } from './components/NavBar'
 import { Footer } from './components/Footer'
 import { Login } from './components/Login'
@@ -37,4 +37,4 @@ function App() {
 
 }
 
-export default App
+export default App;
