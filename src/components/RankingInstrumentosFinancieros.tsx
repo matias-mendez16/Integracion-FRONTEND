@@ -15,7 +15,7 @@ export function RankingInstrumentosFinancieros() {
   if (error || !data) {
     return (
       <div className={styles.errorContainer}>
-        <p>{error || "No se pudieron cargar los datos."}</p>
+        <p>No se pudieron cargar los datos. Intentelo mas tarde.</p>
       </div>
     );
   }

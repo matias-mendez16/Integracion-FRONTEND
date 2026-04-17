@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export type Instrumento = {
+export type InstrumentoFinanciero = {
   id: string;
   nombre: string;
   rendimiento: string;
@@ -8,8 +8,8 @@ export type Instrumento = {
 };
 
 export type RankingData = {
-  tradicionales: Instrumento[];
-  noTradicionales: Instrumento[];
+  tradicionales: InstrumentoFinanciero[];
+  noTradicionales: InstrumentoFinanciero[];
 };
 
 type ApiInstrumento = {
@@ -50,11 +50,11 @@ export const useRankingInstrumentos = () => {
         if (!cancelled) {
           const instrumentos: ApiInstrumento[] = result.data || result;
 
-          const tradicionales: Instrumento[] = [];
-          const noTradicionales: Instrumento[] = [];
+          const tradicionales: InstrumentoFinanciero[] = [];
+          const noTradicionales: InstrumentoFinanciero[] = [];
 
           instrumentos.forEach((item) => {
-            const instrumento: Instrumento = {
+            const instrumento: InstrumentoFinanciero = {
               id: item.id_instrumento.toString(),
               nombre: item.nombre_instrumento || "Sin nombre",
               rendimiento: `${item.rendimiento}%`,
@@ -68,7 +68,7 @@ export const useRankingInstrumentos = () => {
             }
           });
 
-          const ordenar = (arr: Instrumento[]) => {
+          const ordenar = (arr: InstrumentoFinanciero[]) => {
             return arr
               .sort(
                 (primero, segundo) =>
