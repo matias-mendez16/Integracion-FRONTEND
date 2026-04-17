@@ -10,7 +10,7 @@ import { TerminosYCondiciones } from './components/TerminosYCondiciones'
 import { DescargoDeResponsabilidad } from './components/DescargoDeResponsabilidad'
 import { DerechosReservados } from './components/DerechosReservados'
 import { FAQ } from './components/FAQ'
-import { NotFound } from './pages/NotFound.tsx'
+import { NotFound } from './pages/NotFound'
 
 
 
@@ -34,6 +34,7 @@ function App() {
       <Footer />
     </BrowserRouter>
   )
+
 }
 
 export default App
