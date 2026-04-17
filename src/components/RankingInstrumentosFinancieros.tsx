@@ -1,7 +1,7 @@
 import styles from "./RankingInstrumentosFinancieros.module.css";
 import { useRankingInstrumentos } from "../hooks/useRankingInstrumentos";
 
-export default function RankingInstrumentosFinancieros() {
+export function RankingInstrumentosFinancieros() {
   const { data, isLoading, error } = useRankingInstrumentos();
 
   if (isLoading) {
@@ -15,7 +15,7 @@ export default function RankingInstrumentosFinancieros() {
   if (error || !data) {
     return (
       <div className={styles.errorContainer}>
-        <p>{error || "No se pudieron cargar los datos."}</p>
+        <p>No se pudieron cargar los datos. Intentelo mas tarde.</p>
       </div>
     );
   }
