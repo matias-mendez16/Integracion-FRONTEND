@@ -10,6 +10,7 @@ import { TerminosYCondiciones } from './components/TerminosYCondiciones'
 import { DescargoDeResponsabilidad } from './components/DescargoDeResponsabilidad'
 import { DerechosReservados } from './components/DerechosReservados'
 import { FAQ } from './components/FAQ'
+import { NotFound } from './pages/'
 
 
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/descargo-de-responsabilidad" element={<DescargoDeResponsabilidad />} />
         <Route path="/derechos-reservados" element={<DerechosReservados />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
