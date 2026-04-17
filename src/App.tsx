@@ -1,6 +1,7 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import { TerminosYCondiciones } from './components/TerminosYCondiciones'
+import { DerechosReservados } from './components/DerechosReservados'
+
 
 
 function App() {
@@ -8,9 +9,9 @@ function App() {
     <BrowserRouter>
 
       <Routes>
-        <Route path="/terminos-y-condiciones" element={<TerminosYCondiciones />} />
-
+        <Route path="/derechos-reservados" element={<DerechosReservados />} />
       </Routes>
+
     </BrowserRouter>
   )
 }
