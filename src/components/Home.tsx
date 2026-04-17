@@ -5,6 +5,7 @@ export function Home() {
     return (
         <div>
             <RankingInstrumentosFinancieros />
+            
             <TestInversor />
         </div>
     )

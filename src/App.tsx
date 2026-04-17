@@ -10,7 +10,7 @@ import { TerminosYCondiciones } from './components/TerminosYCondiciones'
 import { DescargoDeResponsabilidad } from './components/DescargoDeResponsabilidad'
 import { DerechosReservados } from './components/DerechosReservados'
 import { FAQ } from './components/FAQ'
-import { NotFound } from './pages/'
+import { NotFound } from './pages/NotFound.tsx'
 
 
 
