@@ -127,7 +127,7 @@ export function Contactenos() {
               name="nombre"
               value={formData.nombre}
               onChange={handleChange}
-              placeholder="(obrigatório)"
+              placeholder="(Obligatorio)"
               className={formErrors.nombre ? styles.inputError : ""}
             />
             {formErrors.nombre && <span className={styles.error}>{formErrors.nombre}</span>}
@@ -140,7 +140,7 @@ export function Contactenos() {
               name="apellido"
               value={formData.apellido}
               onChange={handleChange}
-              placeholder="(obrigatório)"
+              placeholder="(Obligatorio)"
               className={formErrors.apellido ? styles.inputError : ""}
             />
             {formErrors.apellido && <span className={styles.error}>{formErrors.apellido}</span>}
@@ -156,7 +156,7 @@ export function Contactenos() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="(obrigatório)"
+              placeholder="(Obligatorio)"
               className={formErrors.email ? styles.inputError : ""}
             />
             {formErrors.email && <span className={styles.error}>{formErrors.email}</span>}
