@@ -156,7 +156,7 @@ export default function Contactenos() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="(obrigatório)"
+              placeholder="(obligatorio)"
               className={formErrors.email ? styles.inputError : ""}
             />
             {formErrors.email && <span className={styles.error}>{formErrors.email}</span>}
