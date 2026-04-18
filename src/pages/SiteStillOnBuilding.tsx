@@ -5,7 +5,7 @@ export function SiteStillOnBuilding() {
     <section className={styles.container}>
       <div className={styles.content}>
         <img 
-          src="/assets/logo-big.png" 
+          src="/assets/logo-complete.png" 
           alt="Liberty Finance Logo" 
           className={styles.logo} 
         />
