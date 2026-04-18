@@ -15,7 +15,7 @@ export const useRankingInstrumentos = () => {
       setError(null);
 
       try {
-        const ranking = await getRankingInstrumentos();
+        const ranking = await getRankingInstrumentos({ orderby: 'rendimiento:DESC', limit: 8 });
         if (!cancelled) setData(ranking);
       } catch (err: any) {
         if (!cancelled) {

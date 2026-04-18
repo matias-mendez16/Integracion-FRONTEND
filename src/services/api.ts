@@ -1,24 +1,30 @@
-import type { ApiInstrumento, Instrumento, RankingData } from "../types/InstrumentoFinanciero";
+import type {
+  Instrumento,
+  RankingData,
+  GetRankingParams,
+} from "../types/InstrumentoFinanciero";
+import { TipoInstrumento } from "../types/InstrumentoFinanciero";
 
-const RANKING_ENDPOINT = "http://localhost:3000/instrumentos-financieros";
+const BASE_API = "https://localhost:3000/api/v1";
 
-function mapInstrumento(item: ApiInstrumento): Instrumento {
-  return {
-    id: item.id_instrumento.toString(),
-    nombre: item.nombre_instrumento || "Sin nombre",
-    rendimiento: `${item.rendimiento}%`,
-    riesgo: item.riesgo,
-  };
-}
+export async function getRankingInstrumentos(
+  params?: GetRankingParams
+): Promise<RankingData> {
+  const query = new URLSearchParams();
 
-function ordenarPorRendimiento(arr: Instrumento[]): Instrumento[] {
-  return arr
-    .sort((a, b) => parseFloat(b.rendimiento) - parseFloat(a.rendimiento))
-    .slice(0, 5);
-}
+  if (params?.orderby) query.append("orderby", params.orderby);
+  if (params?.limit != null) query.append("limit", params.limit.toString());
+  if (params?.skip != null) query.append("skip", params.skip.toString());
+  if (params?.riesgo) query.append("riesgo", params.riesgo);
+  if (params?.tipo_instrumento)
+    query.append("tipo_instrumento", params.tipo_instrumento);
+  if (params?.precio_instrumento != null) {
+    query.append("precio_instrumento", params.precio_instrumento.toString());
+  }
 
-export async function getRankingInstrumentos(): Promise<RankingData> {
-  const response = await fetch(RANKING_ENDPOINT);
+  const url = `${BASE_API}/instrumentos_financieros/?${query.toString()}`;
+
+  const response = await fetch(url);
 
   if (!response.ok) {
     const errorData = await response.json().catch(() => ({}));
@@ -28,22 +34,18 @@ export async function getRankingInstrumentos(): Promise<RankingData> {
   }
 
   const result = await response.json();
-  const instrumentos: ApiInstrumento[] = result.data || result;
+  const instrumentos: Instrumento[] = result.data || result;
 
   const tradicionales: Instrumento[] = [];
   const noTradicionales: Instrumento[] = [];
 
   instrumentos.forEach((item) => {
-    const instrumento = mapInstrumento(item);
-    if (item.tipo_instrumento === "Tradicional") {
-      tradicionales.push(instrumento);
+    if (item.tipo_instrumento === TipoInstrumento.TRADICIONAL) {
+      tradicionales.push(item);
     } else {
-      noTradicionales.push(instrumento);
+      noTradicionales.push(item);
     }
   });
 
-  return {
-    tradicionales: ordenarPorRendimiento(tradicionales),
-    noTradicionales: ordenarPorRendimiento(noTradicionales),
-  };
+  return { tradicionales, noTradicionales };
 }
