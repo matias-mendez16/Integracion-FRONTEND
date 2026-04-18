@@ -2,6 +2,13 @@
     font-family: var(--tipoLetraGeneral);
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+}
+
 .card{
     border: 1px solid var(--colorBordeVentana);
     border-radius: 8px;
@@ -13,7 +20,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between; 
-    overflow-y: auto;               
+    overflow-y: hidden;               
 }
 
 .button{

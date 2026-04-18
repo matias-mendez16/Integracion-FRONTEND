@@ -1,8 +1,9 @@
 import { Card } from "./Card";
+import styles from "./Card.module.css"
 
 export function CardList(){
     return(
-        <div className="container">
+        <div className={styles.container}>
 
                 <Card 
                     title= "Instrumentos Tradicionales" 
