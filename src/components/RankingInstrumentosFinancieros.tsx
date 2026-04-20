@@ -1,4 +1,4 @@
-import styles from "./RankingInstrumentosFinancieros.module.css";
+import styles from "../styles/RankingInstrumentosFinancieros.module.css";
 import { useRankingInstrumentos } from "../hooks/useRankingInstrumentos";
 
 export function RankingInstrumentosFinancieros() {
@@ -43,8 +43,8 @@ export function RankingInstrumentosFinancieros() {
             <h3 className={styles.panelTitle}>Instrumentos tradicionales</h3>
             <ul className={styles.list}>
               {data.tradicionales.map((item) => (
-                <li key={item.id} className={styles.listItem}>
-                  <span className={styles.itemName}>{item.nombre}</span>
+                <li key={item.id_instrumento} className={styles.listItem}>
+                  <span className={styles.itemName}>{item.nombre_instrumento}</span>
                   <span className={styles.itemYield}>{item.rendimiento}</span>
                   <span className={styles.itemRisk}>{item.riesgo}</span>
                 </li>
@@ -58,8 +58,8 @@ export function RankingInstrumentosFinancieros() {
             <h3 className={styles.panelTitle}>Instrumentos no tradicionales</h3>
             <ul className={styles.list}>
               {data.noTradicionales.map((item) => (
-                <li key={item.id} className={styles.listItem}>
-                  <span className={styles.itemName}>{item.nombre}</span>
+                <li key={item.id_instrumento} className={styles.listItem}>
+                  <span className={styles.itemName}>{item.nombre_instrumento}</span>
                   <span className={styles.itemYield}>{item.rendimiento}</span>
                   <span className={styles.itemRisk}>{item.riesgo}</span>
                 </li>
