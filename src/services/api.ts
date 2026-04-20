@@ -5,7 +5,7 @@ import type {
 } from "../types/InstrumentoFinanciero";
 import { TipoInstrumento } from "../types/InstrumentoFinanciero";
 
-const BASE_API = "https://localhost:3000/api/v1";
+const BASE_API = "http://localhost:3000/api/v1";
 
 export async function getRankingInstrumentos(
   params?: GetRankingParams
@@ -22,7 +22,7 @@ export async function getRankingInstrumentos(
     query.append("precio_instrumento", params.precio_instrumento.toString());
   }
 
-  const url = `${BASE_API}/instrumentos_financieros/?${query.toString()}`;
+  const url = `${BASE_API}/instrumentos-financieros/?${query.toString()}`;
 
   const response = await fetch(url);
 
