@@ -1,0 +1,7 @@
+.card {
+    background: white;
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    font-family: var(--tipoLetraGeneral);
+}
