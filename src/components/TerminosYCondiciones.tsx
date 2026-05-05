@@ -1,7 +1,8 @@
 import styles from '../styles/TerminosYCondiciones.module.css'
 
 export function TerminosYCondiciones() {
-  return (
+  return (  
+
     <section className={styles.container}>
       <h1>Términos y condiciones</h1>
       <p>El uso de esta plataforma implica la aceptación plena de los presentes Términos y Condiciones. El sistema está destinado exclusivamente a personas mayores de 18 años. Al registrarse, el usuario declara que cumple con este requisito y acepta que toda la información proporcionada será tratada conforme a las políticas de privacidad vigentes.</p>

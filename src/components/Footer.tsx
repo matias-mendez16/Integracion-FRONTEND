@@ -13,10 +13,10 @@ export function Footer() {
             </div>
 
             <div className={styles.links}>
-                <NavLink to="/terminos-y-condiciones" target="_blank">Términos y condiciones</NavLink>
-                <NavLink to="/descargo-de-responsabilidad" target="_blank">Descargo de responsabilidad</NavLink>
-                <NavLink to="/derechos-reservados" target="_blank">Derechos reservados</NavLink>
-                <NavLink to="/faq" target="_blank">FAQ</NavLink>
+                <NavLink to="/terminos-y-condiciones" >Términos y condiciones</NavLink>
+                <NavLink to="/descargo-de-responsabilidad">Descargo de responsabilidad</NavLink>
+                <NavLink to="/derechos-reservados">Derechos reservados</NavLink>
+                <NavLink to="/faq">FAQ</NavLink>
             </div>
         </footer>
     )
