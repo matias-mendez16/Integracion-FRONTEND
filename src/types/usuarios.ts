@@ -1,5 +1,5 @@
 //falta importar la interface Rol
-//fatal importar la interface Provincias
+import {type Provincia} from "./provincias";
 
 export interface Usuario{
   dni_usuario: number
