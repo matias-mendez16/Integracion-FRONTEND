@@ -21,8 +21,8 @@ function LoginUser() {
   return (
     <section id={styles.contLogin}>
       <form action="" id={styles.formLogin} onSubmit={handleSubmit(enviarForm)}>
-        <label htmlFor="dni_usuario">DNI</label>
-        <input id="dni_usuario" maxLength={8}
+        <label htmlFor="dni_usuario" className={styles.etiquetaForm}>DNI</label>
+        <input className={styles.inputForm} id="dni_usuario" maxLength={8}
           type="text"
           {...register("dni_usuario", {
             required: "Debe ingresar DNI.",
@@ -33,8 +33,8 @@ function LoginUser() {
           placeholder="26134695"
         />
         {errors.dni_usuario && <p>{String(errors.dni_usuario.message)}</p>}
-        <label htmlFor="password">Password</label>        
-        <input id="password" maxLength={8}
+        <label htmlFor="password" className={styles.etiquetaForm}>Password</label>        
+        <input className={styles.inputForm} id="password" maxLength={8}
           type="password"
           {...register("password", {
             required: "Debe ingresar password.",
