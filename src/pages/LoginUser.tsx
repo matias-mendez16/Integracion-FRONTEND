@@ -11,8 +11,10 @@ function LoginUser() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<datosRecibidos>();
+    formState: { errors, isValid },
+  } = useForm<datosRecibidos>({
+  mode: "onChange" // Esto hace que valide mientras escriben
+});
 
   const enviarForm = (data:datosRecibidos) => {
     console.log(data);
@@ -30,22 +32,28 @@ function LoginUser() {
             minLength:{value:7,message:"Deben ser mínimo 7 números"},
             maxLength:{value:8,message:"Deben ser máximo 8 números"},
           })}
-          placeholder="26134695"
+          placeholder="Ingresa tu DNI"
         />
-        {errors.dni_usuario && <p>{String(errors.dni_usuario.message)}</p>}
+        {<span className={styles.errorLogin}>{errors.dni_usuario?String(errors.dni_usuario.message):""}</span>}
         <label htmlFor="password" className={styles.etiquetaForm}>Password</label>        
         <input className={styles.inputForm} id="password" maxLength={8}
+          autoComplete="off"
           type="password"
           {...register("password", {
             required: "Debe ingresar password.",
-            pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[*#]).{8,10}$/, message: "Debe incluir minúscula, mayúscula y un caracter especial (* o #)" },
+            pattern: { value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[*#]).{8,10}$/, message: `Incluir minúscula, mayúscula y "* o #"` },
             minLength:{value:8,message:"Deben ser mínimo 7 caracteres"},
             maxLength:{value:10,message:"Deben ser máximo 8 caracteres"},
           })}
           placeholder="********"
         />      
-        {errors.password && <p>{String(errors.password.message)}</p>}  
-        <button>Login</button>
+        {<span className={styles.errorLogin}>{errors.password?String(errors.password.message):""}</span>}  
+        <button className={styles.botonLogin} disabled={!isValid}
+        style={{ opacity: isValid ? 1 : 0.5, cursor: isValid ? 'pointer' : 'not-allowed' }}
+        >Login</button>
+            <div id={styles.contRegistro}>
+        <span>¿No tienes cuenta?</span><a href="">Crear una</a>        
+      </div>
       </form>
     </section>
   );
@@ -53,7 +61,3 @@ function LoginUser() {
 
 export default LoginUser;
 
-/*
-      <p>{errors.dni_usuario?.message? `${errors.dni_usuario.message}`:""}</p>
-
-*/
