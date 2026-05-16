@@ -17,8 +17,10 @@ function LoginUser() {
 });
 
   const enviarForm = (data:datosRecibidos) => {
-    console.log(data);
+    console.log(data.dni_usuario);
+    console.log(data.password);
   };
+
   console.log(errors);
   return (
     <section id={styles.contLogin}>
