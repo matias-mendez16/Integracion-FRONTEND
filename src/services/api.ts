@@ -8,7 +8,7 @@ import { TipoInstrumento } from "../types/InstrumentoFinanciero";
 const BASE_API = "http://localhost:3000/api/v1";
 
 export async function getRankingInstrumentos(
-  params?: GetRankingParams
+  params?: GetRankingParams,
 ): Promise<RankingData> {
   const query = new URLSearchParams();
 
@@ -27,10 +27,11 @@ export async function getRankingInstrumentos(
   const response = await fetch(url);
 
   if (!response.ok) {
-    const errorData = await response.json().catch(() => ({}));
-    throw new Error(
-      errorData.message || "Error al comunicarse con el servidor"
-    );
+    const errorData = await response.json().catch(() => {
+      throw new Error(
+        errorData.message || "Error al comunicarse con el servidor",
+      );
+    });
   }
 
   const result = await response.json();
