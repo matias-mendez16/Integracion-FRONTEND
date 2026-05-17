@@ -1,16 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "../styles/Register.module.css";
 import { useAuth } from "../hooks/useAuth";
-
-interface Provincia {
-  id: number;
-  provincia: string;
-}
+import { useProvincias } from "../hooks/useProvincias";
 
 export function Register() {
   const navigate = useNavigate();
   const { register } = useAuth();
+  const { provinciasList } = useProvincias(); 
   
   const [formData, setFormData] = useState({
     nombre: "",
@@ -26,28 +23,8 @@ export function Register() {
     terminos: false,
   });
 
-  const [provinciasList, setProvinciasList] = useState<Provincia[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-
-  // Cargar las provincias desde la API al montar el componente
-  useEffect(() => {
-    const fetchProvincias = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/api/v1/provincias");
-        if (response.ok) {
-          const result = await response.json();
-          setProvinciasList(result.data);
-        } else {
-          console.error("Error en la respuesta del servidor al cargar provincias");
-        }
-      } catch (err) {
-        console.error("Error de red al intentar cargar las provincias:", err);
-      }
-    };
-
-    fetchProvincias();
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
@@ -63,36 +40,35 @@ export function Register() {
   };
 
   const validateForm = (): string | null => {
-    if (!formData.nombre.trim()) return "El nombre de usuario no puede estar vacío.";
-    if (!formData.apellido.trim()) return "El apellido no puede estar vacío.";
+    if (!formData.nombre.trim()) return "El nombre de usuario no puede estar vacio.";
+    if (!formData.apellido.trim()) return "El apellido no puede estar vacio.";
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.mail)) return "El mail debe ser válido.";
+    if (!emailRegex.test(formData.mail)) return "El mail debe ser valido.";
 
     if (formData.contraseña.length < 4 || formData.contraseña.length > 10) {
       return "La contraseña debe tener entre 4 y 10 caracteres.";
     }
 
     if (!formData.codArea.trim() || !formData.telefono.trim()) {
-      return "El código de área y el teléfono no pueden estar vacíos.";
+      return "El codigo de área y el telefono no pueden estar vacios.";
     }
     if (!/^\d+$/.test(formData.codArea) || !/^\d+$/.test(formData.telefono)) {
-      return "El número de teléfono debe contener solo números.";
+      return "El numero de telefono debe contener solo números.";
     }
 
     if (!/^\d+$/.test(formData.dni)) {
-      return "El DNI del usuario debe ser un número sin puntos.";
+      return "El DNI del usuario debe ser un numero sin puntos.";
     }
 
     const provId = Number(formData.provincia);
-    // Se removió el límite de 99 porque hay IDs (como 117) que lo superan en tu base de datos
     if (!provId || provId < 1) {
-      return "Debe seleccionar una provincia válida.";
+      return "Debe seleccionar una provincia valida.";
     }
 
-    if (!formData.localidad.trim()) return "La localidad (dirección) no puede estar vacía.";
+    if (!formData.localidad.trim()) return "La localidad (direccion) no puede estar vacia.";
 
-    if (!formData.terminos) return "Debes aceptar los Términos y Condiciones para continuar.";
+    if (!formData.terminos) return "Debes aceptar los Terminos y Condiciones para continuar.";
 
     return null; 
   };
@@ -126,7 +102,7 @@ export function Register() {
       const response = await register(payload);
 
       if (!response.ok) {
-        throw new Error("Ocurrió un error al intentar registrar el usuario. Verifica que el DNI o Email no existan.");
+        throw new Error("Ocurrio un error al intentar registrar el usuario. Verifica que el DNI o Email no existan.");
       }
 
       navigate("/login");
@@ -265,8 +241,8 @@ export function Register() {
                   onChange={handleChange}
                   required
                 >
-                  <option value=""></option>
-                  {/* Mapeo dinámico de provincias */}
+                  <option value="">Seleccione...</option>
+                  {/* Mapeo dinámico de provincias usando el hook */}
                   {provinciasList.map((prov) => (
                     <option key={prov.id} value={prov.id}>
                       {prov.provincia}
@@ -302,7 +278,7 @@ export function Register() {
           />
           <label htmlFor="terminos">
             He leído y acepto los{" "}
-            <a href="/terminos" className={styles.link}>
+            <a href="/terminos-y-condiciones" className={styles.link}>
               Términos y Condiciones
             </a>
           </label>
