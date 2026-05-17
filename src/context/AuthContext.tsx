@@ -96,8 +96,6 @@ export function AuthProvider({ children }: Props) {
   };
 
   const register = async (data: RegisterData) => {
-    console.log(data);
-    console.log(JSON.stringify(data));
     const response = await fetch("http://localhost:3000/api/v1/auth/register", {
       method: "POST",
       headers: {
@@ -108,7 +106,10 @@ export function AuthProvider({ children }: Props) {
 
     if (!response.ok) {
       console.error("Error en el registro", response.statusText);
+      return response; 
     }
+
+    await login(data.dni_usuario, data.contraseña);
 
     return response;
   };
