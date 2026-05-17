@@ -1,5 +1,18 @@
 import { createContext, useState, useEffect, type ReactNode } from "react";
 
+interface RegisterData {
+  dni_usuario: number;
+  nombre: string;
+  apellido: string;
+  mail: string;
+  contraseña: string;
+  numero_telefono: string;
+  direccion: string;
+  id_provincia: number;
+  id_perfilinv: number;
+  id_codigo_referidos: number;
+}
+
 interface User {
   id: number;
   dni: number;
@@ -12,6 +25,7 @@ interface AuthContextType {
   loading: boolean;
   role: string | null;
   login: (dni: number, password: string) => Promise<Response>;
+  register: (data: RegisterData) => Promise<Response>;
   logout: () => void;
   isAuthenticated: boolean;
 }
@@ -60,9 +74,9 @@ export function AuthProvider({ children }: Props) {
     const response = await fetch("http://localhost:3000/api/v1/auth/login", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json; charset=utf-8",
       },
-      body: JSON.stringify({ dni, password }),
+      body: JSON.stringify({ dni_usuario: dni, contraseña: password }),
     });
 
     if (!response.ok) {
@@ -71,12 +85,30 @@ export function AuthProvider({ children }: Props) {
     }
 
     const dataParsed = await response.json();
-    const data = dataParsed.data;
+    const data = dataParsed.data || dataParsed;
 
     setToken(data.token);
     localStorage.setItem("token", data.token);
 
     await getUserInfo(data.token);
+
+    return response;
+  };
+
+  const register = async (data: RegisterData) => {
+    console.log(data);
+    console.log(JSON.stringify(data));
+    const response = await fetch("http://localhost:3000/api/v1/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      console.error("Error en el registro", response.statusText);
+    }
 
     return response;
   };
@@ -103,10 +135,9 @@ export function AuthProvider({ children }: Props) {
     const data = dataParsed.data;
 
     setUser(data);
-    setRole(data.role);
-
+    setRole(data.role || data.rol);
     localStorage.setItem("user", JSON.stringify(data));
-    localStorage.setItem("role", data.role);
+    localStorage.setItem("role", data.role || data.rol);
 
     return response;
   };
@@ -129,6 +160,7 @@ export function AuthProvider({ children }: Props) {
     loading,
     role,
     login,
+    register,
     logout,
     isAuthenticated,
   };
