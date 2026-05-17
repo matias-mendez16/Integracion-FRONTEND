@@ -2,8 +2,8 @@ import type {
   Instrumento,
   RankingData,
   GetRankingParams,
-} from "../types/InstrumentoFinanciero";
-import { TipoInstrumento } from "../types/InstrumentoFinanciero";
+} from "../types/instrumento-financiero";
+import { TipoInstrumento } from "../types/instrumento-financiero";
 
 const BASE_API = "http://localhost:3000/api/v1";
 
@@ -27,6 +27,7 @@ export async function getRankingInstrumentos(
   const response = await fetch(url);
 
   if (!response.ok) {
+    // Se convierte la respuesta a JSON para poder ver el mensaje
     const errorData = await response.json().catch(() => {
       throw new Error(
         errorData.message || "Error al comunicarse con el servidor",

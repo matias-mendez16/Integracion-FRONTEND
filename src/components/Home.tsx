@@ -1,14 +1,13 @@
-import {RankingInstrumentosFinancieros} from "./RankingInstrumentosFinancieros"
-import TestInversor from "./TestInversor"
+import { RankingInstrumentosFinancieros } from "./RankingInstrumentosFinancieros";
+import { TestInversor } from "./TestInversor";
 import { CardList } from "./CardList";
 
 export function Home() {
-    return (
-        <>
-            <RankingInstrumentosFinancieros />
-            <CardList/>
-            <TestInversor />
-        </>
-    )
+  return (
+    <>
+      <RankingInstrumentosFinancieros />
+      <CardList />
+      <TestInversor />
+    </>
+  );
 }
-

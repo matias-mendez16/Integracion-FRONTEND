@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getRankingInstrumentos } from "../services/api";
-import type { RankingData } from "../types/InstrumentoFinanciero";
+import type { RankingData } from "../types/instrumento-financiero";
 
 export const useRankingInstrumentos = () => {
   const [data, setData] = useState<RankingData | null>(null);

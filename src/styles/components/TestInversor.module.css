@@ -15,7 +15,7 @@
     padding: 30px;
 }
 
-#botonTest{
+.botonTest{
     display: flex;
     flex-wrap: wrap;
     width: 150px;
@@ -31,7 +31,7 @@
     transition: 0.3s;
 }
 
-#botonTest:hover{
+.botonTest:hover{
     background-color: var(--colorSecundario);
     transform: scale(1.1);
 }

@@ -1,4 +1,4 @@
-import styles from "../styles/RankingInstrumentosFinancieros.module.css";
+import styles from "../styles/components/RankingInstrumentosFinancieros.module.css";
 import { useRankingInstrumentos } from "../hooks/useRankingInstrumentos";
 
 export function RankingInstrumentosFinancieros() {
@@ -44,7 +44,9 @@ export function RankingInstrumentosFinancieros() {
             <ul className={styles.list}>
               {data.tradicionales.map((item) => (
                 <li key={item.id_instrumento} className={styles.listItem}>
-                  <span className={styles.itemName}>{item.nombre_instrumento}</span>
+                  <span className={styles.itemName}>
+                    {item.nombre_instrumento}
+                  </span>
                   <span className={styles.itemYield}>{item.rendimiento}</span>
                   <span className={styles.itemRisk}>{item.riesgo}</span>
                 </li>
@@ -59,7 +61,9 @@ export function RankingInstrumentosFinancieros() {
             <ul className={styles.list}>
               {data.noTradicionales.map((item) => (
                 <li key={item.id_instrumento} className={styles.listItem}>
-                  <span className={styles.itemName}>{item.nombre_instrumento}</span>
+                  <span className={styles.itemName}>
+                    {item.nombre_instrumento}
+                  </span>
                   <span className={styles.itemYield}>{item.rendimiento}</span>
                   <span className={styles.itemRisk}>{item.riesgo}</span>
                 </li>

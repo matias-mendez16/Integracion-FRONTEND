@@ -1,5 +1,5 @@
-import React, { type ReactNode } from 'react';
-import "./Modal.css"
+import React, { type ReactNode } from "react";
+import styles from "../styles/components/Modal.module.css";
 
 interface ModalProps {
   estaAbierto: boolean;
@@ -11,18 +11,18 @@ const Modal: React.FC<ModalProps> = ({ estaAbierto, cerrar, children }) => {
   if (!estaAbierto) return null;
 
   return (
-    <div className="capaFondo" onClick={cerrar}>
-      <div className="contModal" onClick={(e) => e.stopPropagation()}>
-        <div className="contBotonX">
-          <button onClick={cerrar} className="botonCerrarX">
+    <div className={styles.capaFondo} onClick={cerrar}>
+      <div className={styles.contModal} onClick={(e) => e.stopPropagation()}>
+        <div className={styles.contBotonX}>
+          <button onClick={cerrar} className={styles.botonCerrarX}>
             ✕
           </button>
         </div>
-        <div id='contTextoModal'>
-          {children}
-        </div>
-        <div id='contBotonCerrar'>
-          <button onClick={cerrar} className="botonCerrar">Cerrar</button>            
+        <div className={styles.contTextoModal}>{children}</div>
+        <div className={styles.contBotonCerrar}>
+          <button onClick={cerrar} className={styles.botonCerrar}>
+            Cerrar
+          </button>
         </div>
       </div>
     </div>

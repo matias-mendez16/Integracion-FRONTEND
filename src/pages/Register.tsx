@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "../styles/Register.module.css";
+import styles from "../styles/pages/Register.module.css";
 import { useAuth } from "../hooks/useAuth";
 import { useProvincias } from "../hooks/useProvincias";
 
 export function Register() {
   const navigate = useNavigate();
   const { register } = useAuth();
-  const { provinciasList } = useProvincias(); 
-  
+  const { provinciasList } = useProvincias();
+
   const [formData, setFormData] = useState({
     nombre: "",
     apellido: "",
     mail: "",
-    contraseña: "", 
+    contraseña: "",
     codArea: "",
     telefono: "",
     sexo: "",
@@ -40,7 +40,8 @@ export function Register() {
   };
 
   const validateForm = (): string | null => {
-    if (!formData.nombre.trim()) return "El nombre de usuario no puede estar vacio.";
+    if (!formData.nombre.trim())
+      return "El nombre de usuario no puede estar vacio.";
     if (!formData.apellido.trim()) return "El apellido no puede estar vacio.";
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -66,11 +67,13 @@ export function Register() {
       return "Debe seleccionar una provincia valida.";
     }
 
-    if (!formData.localidad.trim()) return "La localidad (direccion) no puede estar vacia.";
+    if (!formData.localidad.trim())
+      return "La localidad (direccion) no puede estar vacia.";
 
-    if (!formData.terminos) return "Debes aceptar los Terminos y Condiciones para continuar.";
+    if (!formData.terminos)
+      return "Debes aceptar los Terminos y Condiciones para continuar.";
 
-    return null; 
+    return null;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -92,17 +95,19 @@ export function Register() {
         apellido: formData.apellido,
         mail: formData.mail,
         contraseña: formData.contraseña,
-        numero_telefono: `${formData.codArea}${formData.telefono}`, 
-        direccion: formData.localidad, 
+        numero_telefono: `${formData.codArea}${formData.telefono}`,
+        direccion: formData.localidad,
         id_provincia: Number(formData.provincia),
         id_perfilinv: 1,
-        id_codigo_referidos: 0, 
+        id_codigo_referidos: 0,
       };
 
       const response = await register(payload);
 
       if (!response.ok) {
-        throw new Error("Ocurrio un error al intentar registrar el usuario. Verifica que el DNI o Email no existan.");
+        throw new Error(
+          "Ocurrio un error al intentar registrar el usuario. Verifica que el DNI o Email no existan.",
+        );
       }
 
       navigate("/login");
@@ -219,7 +224,7 @@ export function Register() {
               <div className={styles.inputGroup}>
                 <label htmlFor="dni">DNI:</label>
                 <input
-                  type="text" 
+                  type="text"
                   id="dni"
                   name="dni"
                   placeholder="SIN PUNTOS"

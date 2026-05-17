@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styles from "./Contactenos.module.css";
+import styles from "../styles/pages/Contactenos.module.css";
 import { useContactForm } from "../hooks/useContactForm";
 
 export function Contactenos() {
@@ -48,7 +48,8 @@ export function Contactenos() {
         break;
       case "telefono":
         if (value.trim() && !/^[0-9+\-\s()]+$/.test(value)) {
-          errorMessage = "El teléfono solo debe contener números y símbolos (+, -, ()).";
+          errorMessage =
+            "El teléfono solo debe contener números y símbolos (+, -, ()).";
         }
         break;
       case "asunto":
@@ -101,7 +102,9 @@ export function Contactenos() {
 
     setFormErrors(newErrors);
 
-    const hasErrors = Object.values(newErrors).some((errorMsg) => errorMsg !== "");
+    const hasErrors = Object.values(newErrors).some(
+      (errorMsg) => errorMsg !== "",
+    );
 
     if (!hasErrors) {
       await sendForm(formData);
@@ -130,7 +133,9 @@ export function Contactenos() {
               placeholder="(Obligatorio)"
               className={formErrors.nombre ? styles.inputError : ""}
             />
-            {formErrors.nombre && <span className={styles.error}>{formErrors.nombre}</span>}
+            {formErrors.nombre && (
+              <span className={styles.error}>{formErrors.nombre}</span>
+            )}
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="apellido">Apellido</label>
@@ -143,7 +148,9 @@ export function Contactenos() {
               placeholder="(Obligatorio)"
               className={formErrors.apellido ? styles.inputError : ""}
             />
-            {formErrors.apellido && <span className={styles.error}>{formErrors.apellido}</span>}
+            {formErrors.apellido && (
+              <span className={styles.error}>{formErrors.apellido}</span>
+            )}
           </div>
         </div>
 
@@ -159,7 +166,9 @@ export function Contactenos() {
               placeholder="(Obligatorio)"
               className={formErrors.email ? styles.inputError : ""}
             />
-            {formErrors.email && <span className={styles.error}>{formErrors.email}</span>}
+            {formErrors.email && (
+              <span className={styles.error}>{formErrors.email}</span>
+            )}
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="telefono">Teléfono</label>
@@ -171,14 +180,18 @@ export function Contactenos() {
               onChange={handleChange}
               className={formErrors.telefono ? styles.inputError : ""}
             />
-            {formErrors.telefono && <span className={styles.error}>{formErrors.telefono}</span>}
+            {formErrors.telefono && (
+              <span className={styles.error}>{formErrors.telefono}</span>
+            )}
           </div>
         </div>
 
         <div className={styles.formGroup}>
           <div className={styles.labelRow}>
             <label htmlFor="asunto">Asunto</label>
-            <span className={styles.charCount}>{formData.asunto.length}/100</span>
+            <span className={styles.charCount}>
+              {formData.asunto.length}/100
+            </span>
           </div>
           <input
             type="text"
@@ -189,13 +202,17 @@ export function Contactenos() {
             maxLength={100}
             className={formErrors.asunto ? styles.inputError : ""}
           />
-          {formErrors.asunto && <span className={styles.error}>{formErrors.asunto}</span>}
+          {formErrors.asunto && (
+            <span className={styles.error}>{formErrors.asunto}</span>
+          )}
         </div>
 
         <div className={styles.formGroup}>
           <div className={styles.labelRow}>
             <label htmlFor="mensaje">Mensaje</label>
-            <span className={styles.charCount}>{formData.mensaje.length}/500</span>
+            <span className={styles.charCount}>
+              {formData.mensaje.length}/500
+            </span>
           </div>
           <textarea
             id="mensaje"
@@ -206,7 +223,9 @@ export function Contactenos() {
             maxLength={500}
             className={formErrors.mensaje ? styles.inputError : ""}
           />
-          {formErrors.mensaje && <span className={styles.error}>{formErrors.mensaje}</span>}
+          {formErrors.mensaje && (
+            <span className={styles.error}>{formErrors.mensaje}</span>
+          )}
         </div>
 
         {error && (
