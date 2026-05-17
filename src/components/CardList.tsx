@@ -1,4 +1,4 @@
-import { Card } from "./card";
+import { Card } from "./Card";
 import styles from "../components/card.module.css"
 
 export function CardList() {
