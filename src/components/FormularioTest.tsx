@@ -203,8 +203,8 @@ export default function App() {
           <span className="current-score">Puntos: {getScore()}</span>
         </div> */}
 
-        <h3>{q.text}</h3>
-        <p className="subtext">{q.subtext}</p>
+        <div className='titulo'>{q.text}</div>
+        <div className="subtext">{q.subtext}</div>
 
         <div className="options-grid">
           {q.options.map((opt, i) => (
@@ -226,6 +226,7 @@ export default function App() {
           >
             Anterior
           </button>
+          <div className='paginador'>{currentIdx+1}/{questions.length}</div>
           {(currentIdx === questions.length - 1) ?  (
             <button 
               disabled={selections[currentIdx] === null}
