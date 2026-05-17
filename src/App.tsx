@@ -17,7 +17,6 @@ import { NotFound } from './pages/NotFound'
 function App() {
   return (
     <BrowserRouter>
-      <NavBar />
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -30,6 +29,8 @@ function App() {
         <Route path="/faq" element={<FAQ />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+
+      <Footer />
 
       <Footer />
     </BrowserRouter>
