@@ -12,7 +12,7 @@ function LoginUser() {
     handleSubmit,
     formState: { errors },
   } = useForm<datosRecibidos>({
-    mode: "onTouched", //valida campos solo al enviar
+    mode: "onTouched", 
     defaultValues: {
       dni_usuario: "",
       password: "",
@@ -22,9 +22,11 @@ function LoginUser() {
   const enviarForm = async(data: datosRecibidos) => {
     console.log(data.dni_usuario);
     console.log(data.password);
+ /*   
     const dni=data.dni_usuario;
     const pass="1234";
-    
+*/  
+ /*   
     const response = await fetch('http://localhost:3000/api/v1/auth/login',{
         method: "POST",
         headers:{
@@ -41,7 +43,7 @@ function LoginUser() {
         const data= await response.json();
         console.log(data);
   }
-
+*/
 
   };
 
